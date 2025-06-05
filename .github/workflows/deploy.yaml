@@ -20,3 +20,8 @@ jobs:
           echo "GITHUB_ACTION: ${{ github.action }}"
           echo "GITHUB_ACTOR: ${{ github.actor }}"
           echo "GITHUB_VARIABLE: ${{ env.NAME }}"
+
+      - name: Setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
