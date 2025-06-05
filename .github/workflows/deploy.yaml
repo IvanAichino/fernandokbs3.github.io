@@ -19,3 +19,4 @@ jobs:
           echo "GITHUB_WORKSPACE: ${{ github.workspace }}"
           echo "GITHUB_ACTION: ${{ github.action }}"
           echo "GITHUB_ACTOR: ${{ github.actor }}"
+          echo "GITHUB_ACTOR: $NAME"
