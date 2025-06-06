@@ -50,11 +50,14 @@ jobs:
         with:
           node-version: 20
 
+      # Descarga del código fuente del repositorio
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Instalación de dependencias del proyecto
       - name: Install dependencies
         run: npm install
 
+      # Ejecución de pruebas automatizadas
       - name: Run tests
         run: npm run test
