@@ -15,21 +15,21 @@ jobs:
     runs-on: ubuntu-latest
 
     # Servicios necesarios para el job
-    # services:
-    #   # Configuración de Redis como servicio
-    #   redis:
-    #     image: redis
-    #     ports:
-    #       - 6379:6379
+    services:
+      # Configuración de Redis como servicio
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
 
-    # steps:
-    #   # Instalación de herramientas de Redis
-    #   - name: Install redis cli
-    #     run: sudo apt-get update -y && sudo apt-get install redis-tools -y
+    steps:
+      # Instalación de herramientas de Redis
+      - name: Install redis cli
+        run: sudo apt-get update -y && sudo apt-get install redis-tools -y
 
-    #   # Verificación de la conexión a Redis
-    #   - name: Test Redis Connection
-    #     run: redis-cli -h localhost -p 6379 ping
+      # Verificación de la conexión a Redis
+      - name: Test Redis Connection
+        run: redis-cli -h localhost -p 6379 ping
 
       # Depuración: Impresión de variables de entorno y contexto de GitHub
       - name: Print variables
