@@ -80,7 +80,7 @@ jobs:
     
     environment:
       name: github-pages
-      url: ${{ steps.deployments.output.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Deploy artifact to pages
