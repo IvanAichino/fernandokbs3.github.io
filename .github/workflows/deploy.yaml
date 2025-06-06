@@ -1,27 +1,37 @@
+# Workflow de despliegue automático
+# Este workflow se ejecuta automáticamente cuando se hace push a la rama master
 name: Deploy
 
+# Configuración del trigger del workflow
 on:
   push:
     branches:
       - master
 
 jobs:
+  # Job principal de despliegue
   deploy:
+    # Ejecuta en el último Ubuntu disponible
     runs-on: ubuntu-latest
 
+    # Servicios necesarios para el job
     services:
+      # Configuración de Redis como servicio
       redis:
         image: redis
         ports:
           - 6379:6379
 
     steps:
+      # Instalación de herramientas de Redis
       - name: Install redis cli
         run: sudo apt-get update -y && sudo apt-get install redis-tools -y
 
+      # Verificación de la conexión a Redis
       - name: Test Redis Connection
         run: redis-cli -h localhost -p 6379 ping
 
+      # Depuración: Impresión de variables de entorno y contexto de GitHub
       - name: Print variables
         run: |
           echo "GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}"
@@ -34,6 +44,7 @@ jobs:
           echo "GITHUB_ACTOR: ${{ github.actor }}"
           echo "GITHUB_VARIABLE: ${{ env.NAME }}"
 
+      # Configuración del entorno Node.js
       - name: Setup
         uses: actions/setup-node@v4
         with:
